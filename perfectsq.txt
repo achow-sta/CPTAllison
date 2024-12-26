@@ -1,0 +1,100 @@
+1^2 = ?
+1
+1.0
+one
+2^2 = ?
+four
+4.0
+4
+3^2 = ?
+nine
+9
+9.0
+4^2 = ?
+sixteen
+16
+16.0
+5^2 = ?
+25
+25.0
+twenty five
+6^2 = ?
+36
+36.0
+thirty six
+7^2 = ?
+49
+49.0
+fourty nine
+8^2 = ?
+sixty four
+64
+64.0
+9^2 = ?
+81
+81.0
+eighty one
+10^2 = ?
+100
+one hundred
+100.0
+11^2 = ?
+121
+121.0
+one hundred twenty one
+12^2 = ? 
+one hundred fourty four
+144
+144.0
+13^2 = ?
+169
+169.0
+one hundred sixty nine
+14^2 = ?
+196
+196.0
+one hundred ninety six
+15^2 = ?
+225
+225.0
+two hundred twenty five
+16^2 = ?
+256
+256.0
+two hundred fifty six
+17^2 = ?
+289
+two hundred eighty nine
+289.0
+18^2 = ? 
+324
+324.0
+three hundred twenty four
+19^2 = ?
+361
+361.0
+three hundred sixety one
+20^2 = ?
+four hundred
+400
+400.0
+21^2 = ?
+441
+441.0
+four hundred fourty one
+22^2 = ?
+484
+484.0
+four hundred eighty four
+23^2 = ?
+529
+529.0
+five hundred twenty nine
+24^2 = ?
+576
+576.0
+five hundred seventy six
+25^2 = ?
+625
+625.0
+six hundred twenty five

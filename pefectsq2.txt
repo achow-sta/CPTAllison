@@ -1,0 +1,100 @@
+26^2 = ?
+676
+676.0
+six hundred seventy six
+27^2 = ?
+729
+729.0
+seven hundred twenty nine
+28^2 = ?
+784
+784.0
+seven hundred eighty four
+29^2 = ?
+841
+841.0
+eight hundred fourty one
+30^2 = ?
+900
+900.0
+nine hundred
+31^2 = ?
+961
+961.0
+nine hundred sixty one
+32^2 = ?
+1024
+1024.0
+one thousand twenty four
+33^2 = ?
+1089.0
+1089
+one thousand eighty nine
+34^2 = ?
+1156.0
+1156
+one thousand one hundred fifty six
+35^2 = ?
+1250
+1250.0
+one thousand two hundred fifty
+36^2 = ?
+1296.0
+1296
+one thousand two hundred ninety six
+37^2 = ?
+1369
+1369.0
+one thousand three hundred sixty nine
+38^2 = ?
+1444
+1444.0
+one thousand four hundred fourty four
+39^2 = ?
+1521
+1521.0
+one thousand five hundred twenty one
+40^2 = ?
+1600
+1600.0
+one thousand six hundred
+41^2 = ?
+1681
+1681.0
+one thousand six hundred eighty one
+42^2 = ?
+1764
+1764.0
+one hundred sixty four
+43^2 = ? 
+1849
+1849.0
+one thousand eight hundred fourty nine
+44^2 = ?
+1936
+1936.0
+one thousand nine hundred thirty six
+45^2 = ?
+2025
+2025.0
+two thousand twenty five
+46^2 = ?
+2116
+2116.0
+two thousand one hundred sixteen
+47^2 = ? 
+2209
+2209.0
+two thousand two hundred nine
+48^2 = ?
+2304
+2304.0
+two thousand three hundred four
+49^2 = ?
+2401
+2401.0
+two thousand four hundred one
+50^2 = ?
+2500
+2500.0
+two thousand five hundred
