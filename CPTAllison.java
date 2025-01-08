@@ -33,6 +33,43 @@ public class CPTAllison{
 		con.println("                                                   Quit");
 		
 		con.println();
-		con.println("                                        Enter a Key Letter to Begin");
+		
+		//Ask for what user wants to do:
+		String strKeyIn = "";
+		char chrKeyIn;
+		
+		con.print("                                        Enter a Key Letter to Begin: ");
+		strKeyIn = con.readLine(); 
+		chrKeyIn = strKeyIn.charAt(0);
+		
+		//con.println(strKeyIn);
+		//con.println(chrKeyIn);
+		
+		
+		if(chrKeyIn == 'p' || chrKeyIn == 'P'){
+			con.clear(); //FIND WAY TO CLEAR IMAGE
+			Color coverimg = new Color(255, 255, 255);
+			con.setDrawColor(coverimg);
+			playgame(con);
+		}
+		
+		
+	}
+	public static char playgame(Console con){
+		
+		//ask for username
+		String strName;
+		
+		con.print("Enter your Name: ");
+		strName = con.readLine();
+		
+		//statitans username advantage
+		if(strName.equalsIgnoreCase("statitan")){
+			TextOutputFile testfile = new TextOutputFile("test.txt", true);
+			testfile.println("Perfect Squares (Advanced)");			
+			testfile.close(); //FIND WAY TO REMOVE ADVANCED PERFECT SQUARES AFTER USER COMPLETE TEST 
+		}
+		
+		return 'm';
 	}
 }
