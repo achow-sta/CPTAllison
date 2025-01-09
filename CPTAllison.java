@@ -48,8 +48,8 @@ public class CPTAllison{
 		
 		if(chrKeyIn == 'p' || chrKeyIn == 'P'){
 			con.clear(); //FIND WAY TO CLEAR IMAGE
-			Color coverimg = new Color(255, 255, 255);
-			con.setDrawColor(coverimg);
+			//con.setDrawColor(Color.BLACK);
+			con.setBackgroundColor(Color.BLACK);
 			playgame(con);
 		}
 		
