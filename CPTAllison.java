@@ -47,15 +47,14 @@ public class CPTAllison{
 		
 		
 		if(chrKeyIn == 'p' || chrKeyIn == 'P'){
-			con.clear(); //FIND WAY TO CLEAR IMAGE
-			//con.setDrawColor(Color.BLACK);
+			con.clear();
 			con.setBackgroundColor(Color.BLACK);
 			playgame(con);
 		}
 		
 		
 	}
-	public static char playgame(Console con){
+	public static void playgame(Console con){
 		
 		//ask for username
 		String strName;
@@ -70,6 +69,66 @@ public class CPTAllison{
 			testfile.close(); //FIND WAY TO REMOVE ADVANCED PERFECT SQUARES AFTER USER COMPLETE TEST 
 		}
 		
-		return 'm';
+		con.clear();
+		
+		//Entering Empty Lines (Formatting)
+		int intEnterCount;
+		for(intEnterCount = 0; intEnterCount <= 4; intEnterCount++){
+			con.println();
+		}
+		
+		con.println(" Welcome " + strName + "!");
+		for(intEnterCount = 0; intEnterCount <= 4; intEnterCount++){
+			con.println();
+		}
+		con.println("                                        Choose a test to complete: ");
+		con.println();
+		
+		//Open test.txt file to read
+		String strTest;
+		TextInputFile testnames = new TextInputFile("test.txt");
+		
+		while(testnames.eof()==false){
+			strTest = testnames.readLine();
+			con.println("                                                 " + strTest);
+			con.println();
+			con.println();
+		}
+		testnames.close();
+		
+		//Ask user to choose test
+		String strChosenTest;
+		char chrChosen;
+		
+		con.print("Which test would you like to complete?    ");
+		strChosenTest = con.readLine();
+		chrChosen = strChosenTest.charAt(0);
+		
+		
+		//Open Respective Test Files
+		if(chrChosen == 'B' || chrChosen == 'b'){
+			TextInputFile binaryfile = new TextInputFile("Binary Math.txt");
+			//MAKE METHOD TO LOAD QUESTION
+			
+			
+			
+			binaryfile.close();
+		}else if(chrChosen == 'P' || chrChosen == 'p'){
+			TextInputFile pfsqfile = new TextInputFile("Perfect Squares.txt");
+			//METHOD TO LOAD QUESTION
+			pfsqfile.close();
+		}else if(chrChosen == 'Q' || chrChosen == 'q'){
+			TextInputFile quadfile = new TextInputFile("Quadratic.txt");
+			//METHOD LOAD QUESITON
+			quadfile.close();			
+		}else{
+			System.out.println("invalid keyboard input");
+		}
+				
+		
 	}
+	
+public static void question(String strQuestion[][]){
+	
+}
 }
