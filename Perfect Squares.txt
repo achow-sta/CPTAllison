@@ -25,7 +25,7 @@ thirty six
 7^2 = ?
 49
 49.0
-fourty nine
+forty nine
 8^2 = ?
 sixty four
 64
@@ -43,7 +43,7 @@ one hundred
 121.0
 one hundred twenty one
 12^2 = ? 
-one hundred fourty four
+one hundred forty four
 144
 144.0
 13^2 = ?
@@ -81,7 +81,7 @@ four hundred
 21^2 = ?
 441
 441.0
-four hundred fourty one
+four hundred forty one
 22^2 = ?
 484
 484.0
