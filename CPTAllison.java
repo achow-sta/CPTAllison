@@ -116,6 +116,9 @@ public class CPTAllison{
 			//send to method to load question
 			strQuestions = questionload(strChosenTest);
 			
+			//send to another method to sort randomizer
+			strQuestions = sort(strQuestions, strChosenTest);
+			
 			binaryfile.close();
 			
 		}else if(chrChosen == 'P' || chrChosen == 'p'){
@@ -123,6 +126,9 @@ public class CPTAllison{
 			strChosenTest = "Perfect Squares";  // ensure that this is the name being entered into method when inputing varable to method
 			//send to method to load question
 			strQuestions = questionload(strChosenTest);
+			
+			//send to another method to sort randomizer
+			strQuestions = sort(strQuestions, strChosenTest);
 			
 			pfsqfile.close();
 			
@@ -132,6 +138,9 @@ public class CPTAllison{
 			//send to method to load question
 			strQuestions = questionload(strChosenTest);
 			
+			//send to another method to sort randomizer
+			strQuestions = sort(strQuestions, strChosenTest);
+			
 			quadfile.close();			
 			
 		}else if(strName.equalsIgnoreCase("statitan") && strChosenTest.equalsIgnoreCase("Perfect Squares (Advanced)")){
@@ -140,8 +149,10 @@ public class CPTAllison{
 			//send to method to load question
 			strQuestions = questionload(strChosenTest);
 			
-			advpfsq.close();
+			//send to another method to sort randomizer
+			strQuestions = sort(strQuestions, strChosenTest);
 			
+			advpfsq.close();
 		}else{
 			System.out.println("invalid keyboard input");
 		}
@@ -184,7 +195,7 @@ public static String[][] questionload(String strChosenTest){
 			strLoadQuest[intRow][2] = test.readLine();
 			strLoadQuest[intRow][3] = test.readLine();
 			strLoadQuest[intRow][4] = randnum();
-			System.out.println(strLoadQuest[intRow][0] + "| " + strLoadQuest[intRow][1] + "| " + strLoadQuest[intRow][2] + "| "  + strLoadQuest[intRow][3] + "| " + strLoadQuest[intRow][4]);
+			//System.out.println(strLoadQuest[intRow][0] + "| " + strLoadQuest[intRow][1] + "| " + strLoadQuest[intRow][2] + "| "  + strLoadQuest[intRow][3] + "| " + strLoadQuest[intRow][4]);
 		}	
 	}
 	test.close();
@@ -219,21 +230,58 @@ public static String[][] questionload(String strChosenTest){
 			strAns3 = test.readLine();
 		}
 		test.close();
-		System.out.println(intNumQuest);
+		//System.out.println(intNumQuest);
 		
 		return intNumQuest;
 	}
 	
-	public static void sort(String strQuestions[][]){
+	public static String[][] sort(String strQuestions[][], String strChosenTest){
+		//Bubblesort randomizer column
 		String strTempQuestion;
 		String strTempA1;
 		String strTempA2;
 		String strTempA3;
+		String strTempRand;
 		int intRow;
 		int intRow2;
 		int intQuestNum;
 		
-		//for(intRow2 = 0; intRow2 < 
+		intQuestNum = questnum(strChosenTest);
 		
+		for(intRow2 = 0; intRow2 < intQuestNum - 1; intRow2++){
+			
+			for(intRow = 0; intRow < intQuestNum - 1 - intRow2; intRow++){
+				if(Integer.parseInt(strQuestions[intRow][4]) > Integer.parseInt(strQuestions[intRow + 1][4])){
+					//move row top row or row above into temp variable
+					strTempQuestion = strQuestions[intRow][0];
+					strTempA1 = strQuestions[intRow][1];
+					strTempA2 = strQuestions[intRow][2];
+					strTempA3 = strQuestions[intRow][3];
+					strTempRand = strQuestions[intRow][4];
+					
+					//move row below into row above
+					strQuestions[intRow][0] = strQuestions[intRow + 1][0];
+					strQuestions[intRow][1] = strQuestions[intRow + 1][1];
+					strQuestions[intRow][2] = strQuestions[intRow + 1][2];
+					strQuestions[intRow][3] = strQuestions[intRow + 1][3];
+					strQuestions[intRow][4] = strQuestions[intRow + 1][4];
+					
+					//move top row (data is in temp variable) down to bottom row
+					strQuestions[intRow + 1][0] = strTempQuestion;
+					strQuestions[intRow + 1][1] = strTempA1;
+					strQuestions[intRow + 1][2] = strTempA2;
+					strQuestions[intRow + 1][3] = strTempA3;
+					strQuestions[intRow + 1][4] = strTempRand;
+					
+				}
+			}
+		}
+		
+		//system.out.println sorted version
+		for(intRow = 0; intRow < intQuestNum - 1; intRow++){
+			System.out.println(strQuestions[intRow][0] + " | " + strQuestions[intRow][1] + " | " + strQuestions[intRow][2] + " | " + strQuestions[intRow][3] + " |rand " + strQuestions[intRow][4]);
+		}
+		
+		return strQuestions;
 	}
 }
