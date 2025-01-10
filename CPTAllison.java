@@ -261,7 +261,7 @@ public static String[][] questionload(String strChosenTest){
 		
 		intQuestNum = questnum(strChosenTest);
 		
-		for(intRow2 = 0; intRow2 < intQuestNum - 1; intRow2++){
+		for(intRow2 = 0; intRow2 < intQuestNum; intRow2++){
 			
 			for(intRow = 0; intRow < intQuestNum - 1 - intRow2; intRow++){
 				if(Integer.parseInt(strQuestions[intRow][4]) > Integer.parseInt(strQuestions[intRow + 1][4])){
@@ -291,7 +291,8 @@ public static String[][] questionload(String strChosenTest){
 		}
 		
 		//system.out.println sorted version
-		for(intRow = 0; intRow < intQuestNum - 1; intRow++){
+		for(intRow = 0; intRow < intQuestNum; intRow++){
+			System.out.print("Q" + intRow + ": ");
 			System.out.println(strQuestions[intRow][0] + " | " + strQuestions[intRow][1] + " | " + strQuestions[intRow][2] + " | " + strQuestions[intRow][3] + " |rand " + strQuestions[intRow][4]);
 		}
 		
@@ -300,7 +301,7 @@ public static String[][] questionload(String strChosenTest){
 	
 	public static char asking(String[][] strQuestions, String strChosenTest, Console con, String strName){
 		int intNumQuest;
-		int intCount;
+		int intRow;
 		double dblPercent = 0;
 		int intAnsCount = 0;
 		String strAnswer;
@@ -310,36 +311,36 @@ public static String[][] questionload(String strChosenTest){
 		intNumQuest = questnum(strChosenTest);
 		
 		//print questions one by one
-		for(intCount = 0; intCount < intNumQuest - 1; intCount++){
+		for(intRow = 0; intRow <= intNumQuest - 1; intRow++){
 			
 			//print title bar 
 			con.println("                              " + strName + "  |  " + strChosenTest + "  |  " + intCorrect + "/" + intNumQuest + "   " + dblPercent + "%");
 		
 			//print questions one by one
-			con.println(strQuestions[intCount][0]);
+			con.println(strQuestions[intRow][0]);
 			strAnswer = con.readLine();
 			
-			while(!strAnswer.equalsIgnoreCase(strQuestions[intCount][1]) && !strAnswer.equalsIgnoreCase(strQuestions[intCount][2]) && !strAnswer.equalsIgnoreCase(strQuestions[intCount][3])){
+			while(!strAnswer.equalsIgnoreCase(strQuestions[intRow][1]) && !strAnswer.equalsIgnoreCase(strQuestions[intRow][2]) && !strAnswer.equalsIgnoreCase(strQuestions[intRow][3])){
 				con.println();
 				con.println("Incorrect, try again...");
 				con.println();
 				intAnsCount = intAnsCount + 1;
 				
 				//ask question again
-				con.println(strQuestions[intCount][0] + " ");
+				con.println(strQuestions[intRow][0] + " ");
 				strAnswer = con.readLine();
 				
 			}
 			
-			if(strAnswer.equalsIgnoreCase(strQuestions[intCount][1]) || strAnswer.equalsIgnoreCase(strQuestions[intCount][2]) || strAnswer.equalsIgnoreCase(strQuestions[intCount][3])){
+			if(strAnswer.equalsIgnoreCase(strQuestions[intRow][1]) || strAnswer.equalsIgnoreCase(strQuestions[intRow][2]) || strAnswer.equalsIgnoreCase(strQuestions[intRow][3])){
 				con.println("Correct!");
 				con.sleep(500);
 				
 				
 				//only add 1 to correct answers if took one time to correctly answer
 				if(intAnsCount == 0){
-					dblPercent = intCount + 1;
-					dblPercent = Math.round(dblPercent /intNumQuest * 10000)/100;
+					dblPercent = intRow + 1;
+					dblPercent = Math.round(dblPercent /intNumQuest * 10000.0)/100.0;
 					intCorrect = intCorrect + 1;
 				}
 				
@@ -362,7 +363,7 @@ public static String[][] questionload(String strChosenTest){
 		con.println("You got " + dblPercent + "%");
 		
 		//update score to highscores file
-		TextOutputFile highscore = new TextOutputFile("highscores.txt");
+		TextOutputFile highscore = new TextOutputFile("highscores.txt", true);
 		highscore.println(strName);
 		highscore.println(strChosenTest);
 		highscore.println(dblPercent);
