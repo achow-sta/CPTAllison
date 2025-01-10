@@ -67,8 +67,10 @@ public class CPTAllison{
 			TextOutputFile testfile = new TextOutputFile("test.txt", true);
 			testfile.println("Perfect Squares (Advanced)");			
 			testfile.close(); //FIND WAY TO REMOVE ADVANCED PERFECT SQUARES AFTER USER COMPLETE TEST 
+			
+			con.println("Perfect Squares (Advanced) has been added to your test options!");
 		}
-		
+		con.sleep(700);
 		con.clear();
 		
 		//Entering Empty Lines (Formatting)
@@ -106,21 +108,40 @@ public class CPTAllison{
 		
 		
 		//Open Respective Test Files
+		String strQuestions[][];
+		
 		if(chrChosen == 'B' || chrChosen == 'b'){
 			TextInputFile binaryfile = new TextInputFile("Binary Math.txt");
-			//MAKE METHOD TO LOAD QUESTION
-			
-			
+			strChosenTest = "Binary Math";
+			//send to method to load question
+			strQuestions = questionload(strChosenTest);
 			
 			binaryfile.close();
+			
 		}else if(chrChosen == 'P' || chrChosen == 'p'){
 			TextInputFile pfsqfile = new TextInputFile("Perfect Squares.txt");
-			//METHOD TO LOAD QUESTION
+			strChosenTest = "Perfect Squares";  // ensure that this is the name being entered into method when inputing varable to method
+			//send to method to load question
+			strQuestions = questionload(strChosenTest);
+			
 			pfsqfile.close();
+			
 		}else if(chrChosen == 'Q' || chrChosen == 'q'){
 			TextInputFile quadfile = new TextInputFile("Quadratic.txt");
-			//METHOD LOAD QUESITON
+			strChosenTest = "Quadratic";
+			//send to method to load question
+			strQuestions = questionload(strChosenTest);
+			
 			quadfile.close();			
+			
+		}else if(strName.equalsIgnoreCase("statitan") && strChosenTest.equalsIgnoreCase("Perfect Squares (Advanced)")){
+			TextInputFile advpfsq = new TextInputFile("Perfect Squares (Advanced)");
+			strChosenTest = "Perfect Squares (Advanced)";
+			//send to method to load question
+			strQuestions = questionload(strChosenTest);
+			
+			advpfsq.close();
+			
 		}else{
 			System.out.println("invalid keyboard input");
 		}
@@ -128,7 +149,91 @@ public class CPTAllison{
 		
 	}
 	
-public static void question(String strQuestion[][]){
+public static String[][] questionload(String strChosenTest){
+	//String strQuestion;
+	//String strAns1;
+	//String strAns2;
+	//String strAns3;
+	int intRandom;
+	int intRow;
+	int intNumQuest = 0;  
 	
-}
+	//Count how many questions
+	TextInputFile test = new TextInputFile(strChosenTest + ".txt");
+	
+	//while(test.eof() == false){
+		//strQuestion = test.readLine();
+		//intNumQuest = intNumQuest + 1;      // <-- number of questions counter
+		//strAns1 = test.readLine();
+		//strAns2 = test.readLine();
+		//strAns3 = test.readLine();
+	//}
+	//test.close();
+	intNumQuest = questnum(strChosenTest);
+	
+	//Create Array
+	String strLoadQuest[][];
+	strLoadQuest = new String[intNumQuest][5];
+	
+	//Load everything into array first
+	test = new TextInputFile(strChosenTest + ".txt"); //<-- why don't I have to put in a while loop?
+	while(test.eof() == false){
+		for(intRow = 0; intRow <= intNumQuest - 1; intRow++){
+			strLoadQuest[intRow][0] = test.readLine();
+			strLoadQuest[intRow][1] = test.readLine();
+			strLoadQuest[intRow][2] = test.readLine();
+			strLoadQuest[intRow][3] = test.readLine();
+			strLoadQuest[intRow][4] = randnum();
+			System.out.println(strLoadQuest[intRow][0] + "| " + strLoadQuest[intRow][1] + "| " + strLoadQuest[intRow][2] + "| "  + strLoadQuest[intRow][3] + "| " + strLoadQuest[intRow][4]);
+		}	
+	}
+	test.close();
+	
+	return strLoadQuest;
+	}
+	
+	public static String randnum(){
+		int intRand;
+		String strRand;
+		
+		intRand = (int)(Math.random() * 100 + 1);
+		strRand = Integer.toString(intRand);
+		
+		return strRand;
+	}
+	public static int questnum(String strChosenTest){
+		//Count how many questions
+		String strQuestion;
+		String strAns1;
+		String strAns2;
+		String strAns3;
+		int intNumQuest = 0;  
+		
+		TextInputFile test = new TextInputFile(strChosenTest + ".txt");
+		
+		while(test.eof() == false){
+			strQuestion = test.readLine();
+			intNumQuest = intNumQuest + 1;      // <-- number of questions counter
+			strAns1 = test.readLine();
+			strAns2 = test.readLine();
+			strAns3 = test.readLine();
+		}
+		test.close();
+		System.out.println(intNumQuest);
+		
+		return intNumQuest;
+	}
+	
+	public static void sort(String strQuestions[][]){
+		String strTempQuestion;
+		String strTempA1;
+		String strTempA2;
+		String strTempA3;
+		int intRow;
+		int intRow2;
+		int intQuestNum;
+		
+		//for(intRow2 = 0; intRow2 < 
+		
+	}
 }
