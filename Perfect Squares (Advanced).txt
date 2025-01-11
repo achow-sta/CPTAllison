@@ -35,8 +35,8 @@ one thousand eighty nine
 1156
 one thousand one hundred fifty six
 35^2 = ?
-1250
-1250.0
+1225
+1225.0
 one thousand two hundred fifty
 36^2 = ?
 1296.0

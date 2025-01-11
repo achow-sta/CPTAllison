@@ -56,6 +56,8 @@ public class CPTAllison{
 				
 			}else if(chrKeyIn == 's' || chrKeyIn == 'S'){ //secret menu
 				
+			}else if(chrKenIn == 'a' || cheKeyIn == 'A'){ //add quiz function (NEED TO ASK)
+			
 			}else{
 				System.out.println("invalid keyboard input");
 			}

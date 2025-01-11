@@ -17,6 +17,7 @@ public class CPTAllisonTools{
 			testfile.println("Perfect Squares (Advanced)");			
 			testfile.close(); //FIND WAY TO REMOVE ADVANCED PERFECT SQUARES AFTER USER COMPLETE TEST 
 			
+			con.println();
 			con.println("Perfect Squares (Advanced) has been added to your test options!");
 			con.sleep(700);
 		}
@@ -63,7 +64,6 @@ public class CPTAllisonTools{
 		String strQuestions[][];
 		
 		if(chrChosen == 'B' || chrChosen == 'b'){
-			TextInputFile binaryfile = new TextInputFile("Binary Math.txt");
 			strChosenTest = "Binary Math";
 			
 			//send to method to load question
@@ -75,27 +75,9 @@ public class CPTAllisonTools{
 			//send to method to ask questions
 			chrKeyIn = asking(strQuestions, strChosenTest, con, strName);
 			
-			binaryfile.close();
-			return chrKeyIn;
-			
-		}else if(chrChosen == 'P' || chrChosen == 'p'){
-			TextInputFile pfsqfile = new TextInputFile("Perfect Squares.txt");
-			strChosenTest = "Perfect Squares";  // ensure that this is the name being entered into method when inputing varable to method
-			
-			//send to method to load question
-			strQuestions = questionload(strChosenTest);
-			
-			//send to another method to sort randomizer
-			strQuestions = sort(strQuestions, strChosenTest);
-			
-			//send to method to ask questions
-			chrKeyIn = asking(strQuestions, strChosenTest, con, strName);
-			
-			pfsqfile.close();
 			return chrKeyIn;
 			
 		}else if(chrChosen == 'Q' || chrChosen == 'q'){
-			TextInputFile quadfile = new TextInputFile("Quadratic.txt");
 			strChosenTest = "Quadratic";
 			
 			//send to method to load question
@@ -107,11 +89,9 @@ public class CPTAllisonTools{
 			//send to method to ask questions
 			chrKeyIn = asking(strQuestions, strChosenTest, con, strName);
 			
-			quadfile.close();			
 			return chrKeyIn;
 			
 		}else if(strName.equalsIgnoreCase("statitan") && strChosenTest.equalsIgnoreCase("Perfect Squares (Advanced)")){
-			TextInputFile advpfsq = new TextInputFile("Perfect Squares (Advanced)");
 			strChosenTest = "Perfect Squares (Advanced)";
 			
 			//send to method to load question
@@ -123,8 +103,22 @@ public class CPTAllisonTools{
 			//send to method to ask questions
 			chrKeyIn = asking(strQuestions, strChosenTest, con, strName);
 			
-			advpfsq.close();
 			return chrKeyIn;
+			
+		}else if(chrChosen == 'P' || chrChosen == 'p'){
+			strChosenTest = "Perfect Squares";  // ensure that this is the name being entered into method when inputing varable to method
+			
+			//send to method to load question
+			strQuestions = questionload(strChosenTest);
+			
+			//send to another method to sort randomizer
+			strQuestions = sort(strQuestions, strChosenTest);
+			
+			//send to method to ask questions
+			chrKeyIn = asking(strQuestions, strChosenTest, con, strName);
+			
+			return chrKeyIn;
+			
 		}else{
 			System.out.println("invalid keyboard input");
 			return 'm';
@@ -358,6 +352,15 @@ public class CPTAllisonTools{
 		int intEnterCount;
 		for(intEnterCount = 0; intEnterCount <= 4; intEnterCount++){
 			con.println();
+		}
+		
+		//remove advanced pfsq file from test.txt (when needed)
+		if(strChosenTest.equals("Perfect Squares (Advanced)")){
+			TextOutputFile remove = new TextOutputFile("test.txt");
+			remove.println("Binary Math");
+			remove.println("Perfect Squares");
+			remove.println("Quadratic");
+			remove.close();
 		}
 		
 		//return to main menu
