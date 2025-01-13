@@ -1,1 +1,12 @@
-
+name
+test chosen
+0
+ally
+quadratic
+100
+ally
+binary math
+10
+ally
+perfect squares
+50
