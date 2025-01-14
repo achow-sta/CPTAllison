@@ -10,3 +10,9 @@ binary math
 ally
 perfect squares
 50
+p
+Perfect Squares
+96.0
+p
+Perfect Squares
+92.0
