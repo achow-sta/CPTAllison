@@ -123,6 +123,8 @@ public class CPTAllisonTools{
 			System.out.println("invalid keyboard input");
 			return 'm';
 		}
+		
+		
 						
 		
 	}
@@ -268,7 +270,7 @@ public class CPTAllisonTools{
 		int intTries = 3;
 		
 		//get number of questions
-		intNumQuest = CPTAllisonTools.questnum(strChosenTest);
+		intNumQuest = questnum(strChosenTest);
 		
 		//print questions one by one
 		for(intRow = 0; intRow < intNumQuest; intRow++){
@@ -369,16 +371,21 @@ public class CPTAllisonTools{
 		char chrKeyIn;
 		chrKeyIn = con.getChar();
 		
-		
-		while(chrKeyIn != 'm' || chrKeyIn != 'M'){
-			System.out.println("invalid keyboard input");
-			chrKeyIn = con.getChar();
-		}
-		if(chrKeyIn == 'H' || chrKeyIn == 'h'){
-			return chrKeyIn;
+		if(chrKeyIn == 'm' || chrKeyIn == 'M'){
+			return chrKeyIn;			
+		}else{
+			while(chrKeyIn != 'm' || chrKeyIn != 'M'){
+				if(chrKeyIn == 'h' || chrKeyIn == 'H'){
+					help();
+				}else{
+				System.out.println("invalid keyboard input");
+				}
+				chrKeyIn = con.getChar();
+			}
 		}
 		
 		return chrKeyIn;
+		
 	}
 	
 	public static void home(Console con){
@@ -419,4 +426,135 @@ public class CPTAllisonTools{
 		chrKeyIn = con.getChar();
 	}
 	
+	public static void help(){
+		Console con = new Console("AC Math Help Screen", 575, 800);
+		
+		con.println("Press:                                  ");
+		con.println("	(p) to play                      ");
+		con.println("                                         ");
+		con.println("	(v) to view highscores           ");
+		con.println("	                                 ");
+		con.println("	(h) to open help menu            ");
+		con.println("	                                 ");
+		con.println("	(m) to return to main menu       ");
+		con.println("	                                 ");
+		con.println("	(q) to quit                      ");
+		con.println();
+		con.println();
+		con.println();
+		con.println("Notes on Game:");
+		con.println("	* you may answer the binary math test ");
+		con.println("	  in BIN, HEX, or DEC");
+		
+	}
+	
+	public static void secret(){
+		Console con = new Console("shh... it's a secret menu", 500, 420);
+		
+		con.println("!false");
+		con.sleep(900);
+		con.println("It’s funny because it’s true.");
+	}
+	
+	
+	public static char highscore(Console con){
+		// Create array for bubble sort
+		String strLeader[][];
+		
+		// Open highscore.txt file and count how many players
+		TextInputFile scores = new TextInputFile("highscores.txt");
+		
+		String strName;
+		String strTest;
+		int intScore;
+		int intPlayerNum = 0;
+		
+		while(scores.eof() == false){
+			strName = scores.readLine();
+			strTest = scores.readLine();
+			intScore = scores.readInt();
+			
+			intPlayerNum = intPlayerNum + 1;
+		}
+		
+		scores.close();
+		
+		// Load data into array
+		int intRow;
+		strLeader = new String[intPlayerNum][3];
+		scores = new TextInputFile("highscores.txt");
+		
+		for(intRow = 0; intRow < intPlayerNum; intRow++){
+			strLeader[intRow][0] = scores.readLine();
+			strLeader[intRow][1] = scores.readLine();
+			strLeader[intRow][2] = scores.readLine();
+			
+			//System.out.println(strLeader[intRow][0] + " | " + strLeader[intRow][1] + " | " + strLeader[intRow][2]);
+		}
+		scores.close();
+		
+		// Bubblesort
+		String strTempName;
+		String strTempTest;
+		String strTempScore;
+		int intRow2;
+		
+		for(intRow2 = 0; intRow2 < intPlayerNum; intRow2++){
+			for(intRow = 0; intRow < intPlayerNum - 1 - intRow2; intRow++){
+				if(Integer.parseInt(strLeader[intRow][2]) < Integer.parseInt(strLeader[intRow + 1][2])){
+					//shift to temporary
+					strTempName = strLeader[intRow][0];
+					strTempTest = strLeader[intRow][1];
+					strTempScore = strLeader[intRow][2];
+					
+					//move up
+					strLeader[intRow][0] = strLeader[intRow + 1][0];
+					strLeader[intRow][1] = strLeader[intRow + 1][1];
+					strLeader[intRow][2] = strLeader[intRow + 1][2];
+					
+					//move temporary to row below
+					strLeader[intRow + 1][0] = strTempName;
+					strLeader[intRow + 1][1] = strTempTest;
+					strLeader[intRow + 1][2] = strTempScore;
+				}
+			}
+		}
+		
+		// Print sorted version
+		con.println("       Name       |       Test Completed        |       Score       ");
+		con.println("--------------------------------------------------------------------");
+		
+		for(intRow = 0; intRow < intPlayerNum; intRow++){
+			con.println("       " + strLeader[intRow][0] + "      |     " + strLeader[intRow][1] + "       |     " + strLeader[intRow][2]);
+		}
+		
+		//return to main menu
+		char chrKeyIn;
+				
+		con.println();
+		con.println();
+		con.println();
+		con.println();
+		con.println();
+		con.println("Press 'm' to return to main menu");
+		chrKeyIn = con.getChar();
+		
+		
+		
+		
+		if(chrKeyIn == 'm' || chrKeyIn == 'M'){
+			return chrKeyIn;			
+		}else{
+			while(chrKeyIn != 'm' || chrKeyIn != 'M'){
+				if(chrKeyIn == 'h' || chrKeyIn == 'H'){
+					help();
+				}else{
+				System.out.println("invalid keyboard input");
+				}
+				chrKeyIn = con.getChar();
+			}
+		}
+		
+		return chrKeyIn;
+	}
 }
