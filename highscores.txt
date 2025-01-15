@@ -16,3 +16,6 @@ Perfect Squares
 p
 Perfect Squares
 92.0
+Nila
+Binary Math
+54.55

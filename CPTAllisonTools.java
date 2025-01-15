@@ -466,13 +466,13 @@ public class CPTAllisonTools{
 		
 		String strName;
 		String strTest;
-		int intScore;
+		double dblScore;
 		int intPlayerNum = 0;
 		
 		while(scores.eof() == false){
 			strName = scores.readLine();
 			strTest = scores.readLine();
-			intScore = scores.readInt();
+			dblScore = scores.readDouble();
 			
 			intPlayerNum = intPlayerNum + 1;
 		}

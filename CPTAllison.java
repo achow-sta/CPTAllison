@@ -5,7 +5,12 @@ import java.awt.image.*;
 public class CPTAllison{
 	public static void main(String[] args){
 		Console con = new Console("AC Math Training Program", 1280, 720);
-		BufferedImage imghello = con.loadImage("wavingpika.gif");
+		// Creator: Allison Chow
+		// Date Created: Jan 14, 2025
+		// Version 1.3
+		
+		
+		BufferedImage imghello = con.loadImage("wavingpika.gif");		
 		
 		//Loop for entering empty lines
 		int intEnterCount;
