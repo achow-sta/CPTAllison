@@ -454,6 +454,21 @@ public class CPTAllisonTools{
 		con.println("!false");
 		con.sleep(900);
 		con.println("It’s funny because it’s true.");
+		
+		int intEnterCount;
+		for(intEnterCount = 0; intEnterCount <= 4; intEnterCount++){
+			con.println();
+		}
+		
+		//to close window without closing game
+		char chrKeyIn;
+		con.println("Press 'c' to close secret menu");
+		chrKeyIn = con.getChar();
+		
+		if(chrKeyIn == 'c'){
+			con.closeWindow();
+		}
+		
 	}
 	
 	
@@ -501,7 +516,7 @@ public class CPTAllisonTools{
 		
 		for(intRow2 = 0; intRow2 < intPlayerNum; intRow2++){
 			for(intRow = 0; intRow < intPlayerNum - 1 - intRow2; intRow++){
-				if(Integer.parseInt(strLeader[intRow][2]) < Integer.parseInt(strLeader[intRow + 1][2])){
+				if(Double.parseDouble(strLeader[intRow][2]) < Double.parseDouble(strLeader[intRow + 1][2])){
 					//shift to temporary
 					strTempName = strLeader[intRow][0];
 					strTempTest = strLeader[intRow][1];
