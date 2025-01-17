@@ -401,7 +401,7 @@ public class CPTAllisonTools{
 		con.println("                                    Welcome to the Math Training Game!");
 		
 		//More Empty Enter Lines
-		for(intEnterCount = 0; intEnterCount <= 7; intEnterCount++){
+		for(intEnterCount = 0; intEnterCount <= 5; intEnterCount++){
 			con.println();
 		}
 		
@@ -413,6 +413,8 @@ public class CPTAllisonTools{
 		con.println("                                                Highscores");
 		con.println();
 		con.println("                                                   Help");
+		con.println();
+		con.println("                                                 Add Quiz");
 		con.println();
 		con.println("                                                   Quit");
 		
@@ -435,6 +437,8 @@ public class CPTAllisonTools{
 		con.println("	(v) to view highscores           ");
 		con.println("	                                 ");
 		con.println("	(h) to open help menu            ");
+		con.println("	                                 ");
+		con.println("	(a) to add quiz                  ");
 		con.println("	                                 ");
 		con.println("	(m) to return to main menu       ");
 		con.println("	                                 ");
@@ -571,5 +575,87 @@ public class CPTAllisonTools{
 		}
 		
 		return chrKeyIn;
+	}
+	
+	public static char addquiz(Console con){
+		char chrKeyIn;
+		
+		String strFileName;
+		con.println("what is the name of the test file?");
+		strFileName = con.readLine();
+		TextOutputFile newquiz = new TextOutputFile(strFileName + ".txt");
+		con.sleep(600);
+		
+		con.clear();
+		con.println("Please enter the quiz in this format: ");
+		con.println("Question: ");
+		con.println("Possible Answer 1: ");
+		con.println("Possible Answer 2: ");
+		con.println("Possible Answer 3: ");
+		con.println();
+		con.println("When finished, enter \"done\"");
+		
+		con.println("----------------------------------------------------------------------------------");
+		con.println();
+		
+		String strInput = "";
+		int intStop = 1;
+		
+		while(intStop == 1){
+			con.print("Question: ");
+			strInput = con.readLine();
+									
+			//exit loop if "done"
+			if(strInput.equalsIgnoreCase("done")){
+				newquiz.close();
+				intStop = 0;
+			}else{
+				newquiz.println(strInput);
+				
+				con.print("Possible Answer 1: ");
+				strInput = con.readLine();
+				newquiz.println(strInput);
+				
+				con.print("Possible Answer 2: ");
+				strInput = con.readLine();
+				newquiz.println(strInput);
+				
+				con.print("Possible Answer 3: ");
+				strInput = con.readLine();
+				newquiz.println(strInput);
+			}
+			
+			
+		}
+		
+		if(strInput.equalsIgnoreCase("done")){
+			con.clear();
+			con.println("Test Created!");
+			newquiz.close();
+		}
+		
+		//return to main menu
+		con.println();
+		con.println();
+		con.println();
+		con.println("Press 'm' to return to main menu");
+		chrKeyIn = con.getChar();
+		
+		if(chrKeyIn == 'm' || chrKeyIn == 'M'){
+				return chrKeyIn;			
+		}else{
+			while(chrKeyIn != 'm' || chrKeyIn != 'M'){
+				if(chrKeyIn == 'h' || chrKeyIn == 'H'){
+					help();
+				}else{
+				System.out.println("invalid keyboard input");
+				}
+				chrKeyIn = con.getChar();
+			}
+		}
+			
+		return chrKeyIn;
+			
+		
 	}
 }

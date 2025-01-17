@@ -1,21 +1,3 @@
-name
-test chosen
-0
-ally
-quadratic
-100
-ally
-binary math
-10
-ally
-perfect squares
-50
-p
-Perfect Squares
-96.0
-p
-Perfect Squares
-92.0
 Nila
 Binary Math
 54.55
