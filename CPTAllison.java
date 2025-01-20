@@ -11,7 +11,7 @@ public class CPTAllison{
 		Console con = new Console("AC Math Training Program", 1280, 720);
 		
 		
-		BufferedImage imghello = con.loadImage("wavingpika.gif");		
+		BufferedImage imgHello = con.loadImage("wavingpika.gif");		
 		
 		//Loop for entering empty lines
 		int intEnterCount;
@@ -28,7 +28,7 @@ public class CPTAllison{
 		}
 		
 		//Load Image
-		con.drawImage(imghello, 70, 80);
+		con.drawImage(imgHello, 70, 80);
 		
 		con.println("                                                   Play");
 		con.println();
@@ -116,7 +116,5 @@ public class CPTAllison{
 		
 		
 	}
-	
-	
 	
 }

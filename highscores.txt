@@ -13,3 +13,21 @@ Perfect Squares
 testing
 Binary Math
 0.0
+a
+Geometry
+14.29
+testing2
+Binary Math
+0.0
+statitan
+Perfect Squares (Advanced)
+0.0
+g
+Geometry
+0.0
+lasttry
+Geometry
+0.0
+testingagain
+Geometry
+0.0

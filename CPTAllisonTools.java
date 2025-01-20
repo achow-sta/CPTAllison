@@ -39,14 +39,30 @@ public class CPTAllisonTools{
 		
 		//Open test.txt file to read
 		String strTest;
+		int intTestNum = 0;
 		TextInputFile testnames = new TextInputFile("test.txt");
 		
-		while(testnames.eof()==false){
+		while(testnames.eof()== false){
 			strTest = testnames.readLine();
 			con.println("                                                 " + strTest);
 			con.println();
 			con.println();
+			intTestNum = intTestNum + 1;		
+			
 		}
+		
+		//load test names into a 1-d array
+		String strTestNames[];
+		strTestNames = new String[intTestNum];
+		int intTestCount;
+		
+		for(intTestCount = 0; intTestCount < intTestNum; intTestCount++){
+			while(testnames.eof() == false){
+				strTestNames[intTestCount] = testnames.readLine();
+			}
+		}
+		
+		
 		testnames.close();
 		
 		//Ask user to choose test
@@ -119,13 +135,37 @@ public class CPTAllisonTools{
 			
 			return chrKeyIn;
 			
+		}else if(chrChosen == 'g' || chrChosen == 'G'){
+			strChosenTest = "Geometry"; 	// ensure that this is the name being entered into method when inputing varable to method
+			
+			//send to method to load question
+			strQuestions = questionload(strChosenTest);
+			
+			//send to another method to sort randomizer
+			strQuestions = sort(strQuestions, strChosenTest);
+			
+			//send to method to ask questions
+			chrKeyIn = asking(strQuestions, strChosenTest, con, strName);
+			
+			return chrKeyIn;
+			
+			
+		}else if(strChosenTest.equalsIgnoreCase(strTestNames[intTestNum - 1])){
+			//send to method to load question
+			strQuestions = questionload(strChosenTest);
+			
+			//send to another method to sort randomizer
+			strQuestions = sort(strQuestions, strChosenTest);
+			
+			//send to method to ask questions
+			chrKeyIn = asking(strQuestions, strChosenTest, con, strName);
+			
+			return chrKeyIn;
+			
 		}else{
 			System.out.println("invalid keyboard input");
 			return 'm';
-		}
-		
-		
-						
+		}	
 		
 	}
 	
@@ -268,6 +308,9 @@ public class CPTAllisonTools{
 		String strAnswer;
 		int intCorrect = 0;
 		int intTries = 3;
+		String strQ;
+		String strFileType;
+		int intQLength;
 		
 		//get number of questions
 		intNumQuest = questnum(strChosenTest);
@@ -278,8 +321,19 @@ public class CPTAllisonTools{
 			//print title bar 
 			con.println("                              " + strName + "  |  " + strChosenTest + "  |  " + intCorrect + "/" + intRow + "   " + dblPercent + "%");
 		
-			//print questions one by one
-			con.println("Q" + (intRow + 1) + ": " + strQuestions[intRow][0]);
+			//print questions one by one... if question has png/jpg/jpeg, draw the image instead
+			strQ = strQuestions[intRow][0];
+			intQLength = strQ.length();
+			strFileType = strQ.substring(intQLength - 4, intQLength);
+			//System.out.println(strFileType);
+			
+			if(strFileType.equals(".jpg") || strFileType.equals(".png") || strFileType.equals(".gif")){
+				BufferedImage imgQuestion = con.loadImage(strQ);
+				con.drawImage(imgQuestion, 700, 50);
+				con.print("Answer: ");
+			}else{
+				con.println("Q" + (intRow + 1) + ": " + strQuestions[intRow][0]);
+			}
 			strAnswer = con.readLine();
 			
 			//correct scenario
@@ -323,6 +377,7 @@ public class CPTAllisonTools{
 			//con.println(dblPercent);
 			
 			con.clear();
+			con.setBackgroundColor(Color.BLACK);
 			intTries = 3;
 			
 		}
@@ -358,11 +413,12 @@ public class CPTAllisonTools{
 		
 		//remove advanced pfsq file from test.txt (when needed)
 		if(strChosenTest.equals("Perfect Squares (Advanced)")){
-			TextOutputFile remove = new TextOutputFile("test.txt");
-			remove.println("Binary Math");
-			remove.println("Perfect Squares");
-			remove.println("Quadratic");
-			remove.close();
+			TextOutputFile adding = new TextOutputFile("test.txt");
+			adding.println("Binary Math");
+			adding.println("Perfect Squares");
+			adding.println("Quadratic");
+			adding.println("Geometry");
+			adding.close();
 		}
 		
 		//return to main menu
@@ -372,16 +428,19 @@ public class CPTAllisonTools{
 		chrKeyIn = con.getChar();
 		
 		if(chrKeyIn == 'm' || chrKeyIn == 'M'){
-			return chrKeyIn;			
-		}else{
-			while(chrKeyIn != 'm' || chrKeyIn != 'M'){
-				if(chrKeyIn == 'h' || chrKeyIn == 'H'){
-					help();
-				}else{
+			return chrKeyIn;
+		}
+		
+		int intStop = 0;
+		while(intStop == 0){
+			if(chrKeyIn == 's' || chrKeyIn == 'S'){
+				secret();
+			}else if(chrKeyIn == 'm' || chrKeyIn == 'M'){
+				intStop = 1;
+			}else{
 				System.out.println("invalid keyboard input");
-				}
-				chrKeyIn = con.getChar();
 			}
+			chrKeyIn = con.getChar();
 		}
 		
 		return chrKeyIn;
@@ -449,6 +508,8 @@ public class CPTAllisonTools{
 		con.println("Notes on Game:");
 		con.println("	* you may answer the binary math test ");
 		con.println("	  in BIN, HEX, or DEC");
+		con.println("   * DO NOT put units in the geometry test"); 
+		con.println("     answers");
 		
 	}
 	
@@ -628,6 +689,11 @@ public class CPTAllisonTools{
 		
 		if(strInput.equalsIgnoreCase("done")){
 			con.clear();
+			
+			TextOutputFile addtestname = new TextOutputFile("test.txt",true);
+			addtestname.println(strFileName);
+			addtestname.close();
+			
 			con.println("Test Created!");
 			newquiz.close();
 		}
