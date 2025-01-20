@@ -28,7 +28,7 @@ public class CPTAllison{
 		}
 		
 		//Load Image
-		con.drawImage(imghello, 100, 100);
+		con.drawImage(imghello, 70, 80);
 		
 		con.println("                                                   Play");
 		con.println();
@@ -52,16 +52,7 @@ public class CPTAllison{
 		//con.println(strKeyIn);
 		//con.println(chrKeyIn);
 		
-		if(chrKeyIn == 'q' || chrKeyIn == 'Q'){
-			con.clear();
-			con.setBackgroundColor(Color.BLACK);
-			con.println("Thanks for playing!");
-			con.sleep(500);
-			con.closeWindow();
-		}else{
-			
-		}
-		
+				
 		if(chrKeyIn != 'q' || chrKeyIn != 'Q'){
 			while(chrKeyIn != 'q' || chrKeyIn != 'Q'){
 				if(chrKeyIn == 'p' || chrKeyIn == 'P'){  //playgame
@@ -97,7 +88,17 @@ public class CPTAllison{
 					con.clear();
 					CPTAllisonTools.home(con);
 				}else{
-					System.out.println("invalid keyboard input");
+					if(chrKeyIn == 'q' || chrKeyIn == 'Q'){
+						con.clear();
+						con.setBackgroundColor(Color.BLACK);
+						con.println("Thanks for playing!");
+						con.sleep(500);
+						con.println("... closing game ...");
+						con.sleep(500);
+						con.closeWindow();
+					}else{
+						System.out.println("invalid keyboard input");	
+					}
 				}
 				chrKeyIn = con.getChar();
 			}
@@ -116,86 +117,6 @@ public class CPTAllison{
 		
 	}
 	
-	public static char addquiz(Console con){
-		char chrKeyIn;
-		
-		String strFileName;
-		con.println("what is the name of the test file?");
-		strFileName = con.readLine();
-		TextOutputFile newquiz = new TextOutputFile(strFileName + ".txt");
-		con.sleep(600);
-		
-		con.clear();
-		con.println("Please enter the quiz in this format: ");
-		con.println("Question: ");
-		con.println("Possible Answer 1: ");
-		con.println("Possible Answer 2: ");
-		con.println("Possible Answer 3: ");
-		con.println();
-		con.println("When finished, enter \"done\"");
-		
-		con.println("----------------------------------------------------------------------------------");
-		con.println();
-		
-		String strInput = "";
-		int intStop = 1;
-		
-		while(intStop == 1){
-			con.print("Question: ");
-			strInput = con.readLine();
-									
-			//exit loop if "done"
-			if(strInput.equalsIgnoreCase("done")){
-				newquiz.close();
-				intStop = 0;
-			}else{
-				newquiz.println(strInput);
-				
-				con.print("Possible Answer 1: ");
-				strInput = con.readLine();
-				newquiz.println(strInput);
-				
-				con.print("Possible Answer 2: ");
-				strInput = con.readLine();
-				newquiz.println(strInput);
-				
-				con.print("Possible Answer 3: ");
-				strInput = con.readLine();
-				newquiz.println(strInput);
-			}
-			
-			
-		}
-		
-		if(strInput.equalsIgnoreCase("done")){
-			con.clear();
-			con.println("Test Created!");
-			newquiz.close();
-		}
-		
-		//return to main menu
-		con.println();
-		con.println();
-		con.println();
-		con.println("Press 'm' to return to main menu");
-		chrKeyIn = con.getChar();
-		
-		if(chrKeyIn == 'm' || chrKeyIn == 'M'){
-				return chrKeyIn;			
-		}else{
-			while(chrKeyIn != 'm' || chrKeyIn != 'M'){
-				if(chrKeyIn == 'h' || chrKeyIn == 'H'){
-					CPTAllisonTools.help();
-				}else{
-				System.out.println("invalid keyboard input");
-				}
-				chrKeyIn = con.getChar();
-			}
-		}
-			
-		return chrKeyIn;
-			
-		
-	}
+	
 	
 }

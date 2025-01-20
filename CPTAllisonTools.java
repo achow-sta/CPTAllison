@@ -406,7 +406,7 @@ public class CPTAllisonTools{
 		}
 		
 		//Load Image
-		con.drawImage(imghello, 100, 100);
+		con.drawImage(imghello, 70, 80);
 		
 		con.println("                                                   Play");
 		con.println();
@@ -558,23 +558,21 @@ public class CPTAllisonTools{
 		con.println("Press 'm' to return to main menu");
 		chrKeyIn = con.getChar();
 		
-		
-		
-		
 		if(chrKeyIn == 'm' || chrKeyIn == 'M'){
-			return chrKeyIn;			
-		}else{
-			while(chrKeyIn != 'm' || chrKeyIn != 'M'){
-				if(chrKeyIn == 'h' || chrKeyIn == 'H'){
-					help();
-				}else{
-				System.out.println("invalid keyboard input");
-				}
-				chrKeyIn = con.getChar();
-			}
+			return chrKeyIn;
 		}
 		
-		return chrKeyIn;
+		while(chrKeyIn != 'm' || chrKeyIn != 'M'){
+			if(chrKeyIn == 'h' || chrKeyIn == 'H'){
+				help();
+			}else if(chrKeyIn != 'm' || chrKeyIn != 'M'){
+				System.out.println("invalid keyboard input");
+			}
+			chrKeyIn = con.getChar();
+		}
+		
+		return chrKeyIn;			
+		
 	}
 	
 	public static char addquiz(Console con){
@@ -642,13 +640,13 @@ public class CPTAllisonTools{
 		chrKeyIn = con.getChar();
 		
 		if(chrKeyIn == 'm' || chrKeyIn == 'M'){
-				return chrKeyIn;			
+			return chrKeyIn;			
 		}else{
 			while(chrKeyIn != 'm' || chrKeyIn != 'M'){
 				if(chrKeyIn == 'h' || chrKeyIn == 'H'){
 					help();
 				}else{
-				System.out.println("invalid keyboard input");
+					System.out.println("invalid keyboard input");
 				}
 				chrKeyIn = con.getChar();
 			}
@@ -658,4 +656,5 @@ public class CPTAllisonTools{
 			
 		
 	}
+	
 }

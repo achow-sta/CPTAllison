@@ -1,3 +1,15 @@
 Nila
 Binary Math
 54.55
+hazel
+Perfect Squares
+92.0
+hasini
+Binary Math
+63.64
+chloe
+Perfect Squares
+36.0
+testing
+Binary Math
+0.0
