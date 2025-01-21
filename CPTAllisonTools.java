@@ -50,7 +50,7 @@ public class CPTAllisonTools{
 			con.println();
 			
 		}
-		System.out.println(intTestNum);
+		//System.out.println(intTestNum);
 		testnames.close();
 		
 		//load test names into a 1-d array
@@ -62,7 +62,7 @@ public class CPTAllisonTools{
 		
 		while(testnames.eof() == false && intTestCount < intTestNum){
 			strTestNames[intTestCount] = testnames.readLine();
-			System.out.println(intTestCount + ". " + strTestNames[intTestCount]);
+			//System.out.println(intTestCount + ". " + strTestNames[intTestCount]);
 			
 			intTestCount = intTestCount + 1;
 		}		
@@ -75,7 +75,7 @@ public class CPTAllisonTools{
 		int intChosenTest;
 		//char chrChosen;
 		
-		con.print("(Enter the number) Which test would you like to complete?    ");
+		con.print("(Enter the number of the test would you like to complete:    ");
 		intChosenTest = con.readInt();
 		//chrChosen = strChosenTest.charAt(0);
 		strChosenTest = strTestNames[intChosenTest - 1];
@@ -104,96 +104,6 @@ public class CPTAllisonTools{
 		}
 		return 'm';
 		
-		
-		
-		
-		//if(chrChosen == 'B' || chrChosen == 'b'){
-			//strChosenTest = "Binary Math";
-			
-			////send to method to load question
-			//strQuestions = questionload(strChosenTest);
-			
-			////send to another method to sort randomizer
-			//strQuestions = sort(strQuestions, strChosenTest);
-			
-			////send to method to ask questions
-			//chrKeyIn = asking(strQuestions, strChosenTest, con, strName);
-			
-			//return chrKeyIn;
-			
-		//}else if(chrChosen == 'Q' || chrChosen == 'q'){
-			//strChosenTest = "Quadratic";
-			
-			////send to method to load question
-			//strQuestions = questionload(strChosenTest);
-			
-			////send to another method to sort randomizer
-			//strQuestions = sort(strQuestions, strChosenTest);
-			
-			////send to method to ask questions
-			//chrKeyIn = asking(strQuestions, strChosenTest, con, strName);
-			
-			//return chrKeyIn;
-			
-		//}else if(strName.equalsIgnoreCase("statitan") && strChosenTest.equalsIgnoreCase("Perfect Squares (Advanced)")){
-			//strChosenTest = "Perfect Squares (Advanced)";
-			
-			////send to method to load question
-			//strQuestions = questionload(strChosenTest);
-			
-			////send to another method to sort randomizer
-			//strQuestions = sort(strQuestions, strChosenTest);
-			
-			////send to method to ask questions
-			//chrKeyIn = asking(strQuestions, strChosenTest, con, strName);
-			
-			//return chrKeyIn;
-			
-		//}else if(chrChosen == 'P' || chrChosen == 'p'){
-			//strChosenTest = "Perfect Squares";  // ensure that this is the name being entered into method when inputing varable to method
-			
-			////send to method to load question
-			//strQuestions = questionload(strChosenTest);
-			
-			////send to another method to sort randomizer
-			//strQuestions = sort(strQuestions, strChosenTest);
-			
-			////send to method to ask questions
-			//chrKeyIn = asking(strQuestions, strChosenTest, con, strName);
-			
-			//return chrKeyIn;
-			
-		//}else if(chrChosen == 'g' || chrChosen == 'G'){
-			//strChosenTest = "Geometry"; 	// ensure that this is the name being entered into method when inputing varable to method
-			
-			////send to method to load question
-			//strQuestions = questionload(strChosenTest);
-			
-			////send to another method to sort randomizer
-			//strQuestions = sort(strQuestions, strChosenTest);
-			
-			////send to method to ask questions
-			//chrKeyIn = asking(strQuestions, strChosenTest, con, strName);
-			
-			//return chrKeyIn;
-			
-			
-		//}else if(strChosenTest.equalsIgnoreCase(strTestNames[intTestNum - 1])){
-			////send to method to load question
-			//strQuestions = questionload(strChosenTest);
-			
-			////send to another method to sort randomizer
-			//strQuestions = sort(strQuestions, strChosenTest);
-			
-			////send to method to ask questions
-			//chrKeyIn = asking(strQuestions, strChosenTest, con, strName);
-			
-			//return chrKeyIn;
-			
-		//}else{
-			//System.out.println("invalid keyboard input");
-			//return 'm';
-		//}	
 	}
 	
 	
