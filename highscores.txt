@@ -10,30 +10,18 @@ Binary Math
 chloe
 Perfect Squares
 36.0
-testing
-Binary Math
-0.0
 a
 Geometry
 14.29
-testing2
-Binary Math
-0.0
-statitan
-Perfect Squares (Advanced)
-0.0
-g
-Geometry
-0.0
-lasttry
-Geometry
-0.0
-testingagain
-Geometry
-0.0
 chloe
 Perfect Squares
 88.0
-ally
+bob
+Perfect Squares
+92.0
+statitan
+Perfect Squares (Advanced)
+84.0
+bob
 Binary Math
-0.0
+36.36
