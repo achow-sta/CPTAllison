@@ -31,3 +31,9 @@ Geometry
 testingagain
 Geometry
 0.0
+chloe
+Perfect Squares
+88.0
+ally
+Binary Math
+0.0
